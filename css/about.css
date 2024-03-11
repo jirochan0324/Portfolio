@@ -4557,27 +4557,45 @@ body {
   }
 }
 .header {
-  max-width: 100%;
-  padding: 50px 20px 0 50px;
+  padding: 50px 50px 0px 50px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.header .nav {
-  width: auto;
-  max-width: 220px;
-  min-width: 220px;
-}
-.header .nav .link-list {
+.header .link-list {
   list-style-type: none;
   display: flex;
   justify-content: space-between;
 }
-.header .nav .link-list .link {
+.header .link-list .link-wrap {
+  margin-left: 32px;
+}
+.header .link-list .link-wrap:first-child {
+  margin-left: 0px;
+}
+.header .link-list .link-wrap .link {
   color: #333;
   font-size: 16px;
   font-weight: 600;
   text-decoration: none;
+  transition: 0.2s ease-in;
+  position: relative;
+}
+.header .link-list .link-wrap .link::after {
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  display: block;
+  content: " ";
+  width: 100%;
+  height: 2px;
+  background-color: #777;
+  transform: scale(0, 1);
+  transform-origin: center top;
+  transition: all 0.3s ease;
+}
+.header .link-list .link-wrap .link:hover::after {
+  transform: scale(1, 1);
 }
 .header .home {
   text-decoration: none;
@@ -4587,6 +4605,7 @@ body {
 }
 
 .about-container {
+  margin-top: 80px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -4595,51 +4614,44 @@ body {
 .about-container .about-wrapper {
   width: 70%;
 }
-.about-container .about-wrapper .about-title {
-  margin-bottom: 60px;
-}
-.about-container .about-wrapper .about-title .about {
+.about-container .about-wrapper .about {
   text-align: center;
   font-size: 3rem;
 }
 .about-container .about-wrapper .my-info {
+  margin-top: 40px;
   display: flex;
   justify-content: space-between;
 }
 .about-container .about-wrapper .my-info .info-wrapper .birthday {
-  font-size: 16px;
+  font-size: 1.6rem;
 }
 .about-container .about-wrapper .my-info .info-wrapper .name {
-  font-size: 28px;
-  line-height: 28px;
+  font-size: 1.8rem;
 }
 .about-container .about-wrapper .my-info .info-wrapper .job {
-  font-size: 24px;
-  line-height: 48px;
+  font-size: 1.6rem;
 }
 .about-container .about-content-wrapper {
   margin-top: 20px;
   width: 70%;
 }
 .about-container .about-content-wrapper .content-text {
-  font-size: 16px;
+  font-size: 1.6rem;
+}
+.about-container .about-content-wrapper .content-text .br {
+  display: none;
 }
 .about-container .about-content-wrapper .school {
-  font-size: 16px;
+  margin-bottom: 40px;
 }
-.about-container .about-content-wrapper .text1 {
-  margin-top: 50px;
-}
-.about-container .skill-content-wrapper {
-  margin-top: 120px;
-  width: 90%;
-}
-.about-container .skill-content-wrapper .skill {
-  font-size: 18px;
+.about-container .profile {
   text-align: center;
+  font-size: 18px;
   position: relative;
+  margin-top: 80px;
 }
-.about-container .skill-content-wrapper .skill::after {
+.about-container .profile::after {
   display: block;
   position: absolute;
   left: 50%;
@@ -4648,52 +4660,47 @@ body {
   border-bottom: 2px solid #333;
   content: "";
 }
-.about-container .skill-content-wrapper .skill-wrapper {
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  width: auto;
-}
-.about-container .skill-content-wrapper .skill-wrapper .skill-exp-container {
-  margin: 30px 40px;
-  padding: 40px 20px;
-  max-width: 340px;
-  min-width: 340px;
-  border: solid;
-}
-.about-container .skill-content-wrapper .skill-wrapper .skill-exp-container .skill-title {
-  text-align: center;
-  font-size: 18px;
-}
-.about-container .skill-content-wrapper .skill-wrapper .skill-exp-container .skill-exp {
-  text-align: left;
-  font-size: 14px;
-}
-.about-container .skill-content-wrapper .skill-container {
+.about-container .skill-wrap {
   margin-top: 50px;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-.about-container .skill-content-wrapper .skill-container .skill-list {
-  width: 50%;
   list-style-type: none;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(3, 336px);
+  gap: 64px;
 }
-.about-container .skill-content-wrapper .skill-container .skill-list .skill-wrap {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  flex-wrap: wrap;
+.about-container .skill-wrap .skill-content {
+  padding: 28px 32px 32px;
+  border: solid 2px;
+  text-align: center;
+  border-radius: 20px 10px 20px 10px;
 }
-.about-container .skill-content-wrapper .skill-container .skill-list .skill-wrap .skills {
-  width: 65px;
+.about-container .skill-wrap .skill-content .skill-icon-resp {
+  display: none;
 }
-.about-container .skill-content-wrapper .skill-container .skill-list .skill-wrap .percent {
-  font-size: 1.5rem;
+.about-container .skill-wrap .skill-content .skill-ttl {
+  font-size: 1.4rem;
+  font-weight: 800;
+}
+.about-container .skill-wrap .skill-content .skill-text {
+  margin-top: 24px;
+  font-size: 1.3rem;
+}
+.about-container .btn-wrapper {
+  margin-top: 70px;
+  text-align: center;
+}
+.about-container .btn-wrapper .btn {
+  padding: 20px 40px;
+  border: solid #333 2px;
+  text-decoration: none;
+  color: #333;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: bold;
+  transition: 0.2s ease-in;
+}
+.about-container .btn-wrapper .btn:hover {
+  color: #fff;
+  background-color: #333;
 }
 
 .contact-container {
@@ -4706,7 +4713,7 @@ body {
   text-align: center;
 }
 .contact-container .contact-wrapper .contact {
-  font-size: 18px;
+  font-size: 1.8rem;
   position: relative;
 }
 .contact-container .contact-wrapper .contact::after {
@@ -4720,7 +4727,7 @@ body {
 }
 .contact-container .contact-wrapper .contact-text {
   margin-top: 40px;
-  font-size: 16px;
+  font-size: 1.4rem;
   font-weight: 500;
   letter-spacing: 0.5rem;
 }
@@ -4734,7 +4741,6 @@ body {
   color: #333;
   font-size: 12px;
   font-style: normal;
-  font-weight: bold;
   transition: 0.2s ease-in;
 }
 .contact-container .contact-wrapper .address-wrapper .address:hover {
@@ -4753,64 +4759,75 @@ body {
   font-size: 10px;
   font-weight: bold;
   color: #FFF;
-}/*# sourceMappingURL=about.css.map */
-
-
-/* 以下レスポンシブ */
-
-@media screen and (max-width: 767px) {/* スクリーンサイズが767px以下の場合に適用 */
-  .fv-container {
-    height: 50vh;
-  }
-  .my-consept-container .consept-wrapper .heading2 {
-    text-align: center;
-    font-size: 3rem;
-  }
-  .my-consept-container .consept-wrapper .consept-text {
-    padding: 0px 16px;
-    width: 720px;
-    min-width: 380px;
-    margin-top: 20px;
-    font-size: 2rem;
-  }
-
-  .profile-container .profile-wrapper .my-info-container .my-info-wrapper {
-    width: 560px;
-  }
-  .profile-container .profile-wrapper .my-info-container .my-info-wrappe .info-wrapper .my-info-img {
-    width: 160px;
-    height: 160px;
-    object-fit: cover;
-    position: relative;
-  }
-  .profile-container .profile-wrapper .skill-container .skill-list {
-    width:560px;
-    list-style-type: none;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-  }
 }
 
-@media screen and (max-width:374px){
+@media screen and (max-width: 767px) {
   .header {
-    padding: 20px 8px 0px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    padding: 20px 20px 0px 20px;
   }
-
-  .header .nav .link-list .link {
-    color: #333;
-    font-size: 12px;
-    font-weight: 600;
-    text-decoration: none;
-  }
-
   .header .home {
     text-decoration: none;
     color: #333;
     font-size: 1.6rem;
     font-weight: 900;
   }
-}
+  .header .link-list {
+    list-style-type: none;
+    display: flex;
+    justify-content: right;
+  }
+  .header .link-list .link-wrap {
+    margin-left: 10px;
+  }
+  .header .link-list .link-wrap:first-child {
+    margin-left: 0px;
+  }
+  .header .link-list .link-wrap .link {
+    color: #333;
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.2s ease-in;
+    position: relative;
+  }
+  .header .link-list .link-wrap .link::after {
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    display: block;
+    content: " ";
+    width: 100%;
+    height: 2px;
+    background-color: #777;
+    transform: scale(0, 1);
+    transform-origin: center top;
+    transition: all 0.3s ease;
+  }
+  .header .link-list .link-wrap .link:hover::after {
+    transform: scale(1, 1);
+  }
+  .about-container .about-wrapper .about {
+    font-size: 2rem;
+  }
+  .about-container .about-wrapper .my-info {
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .about-container .about-wrapper .my-info .info-wrapper .birthday {
+    font-size: 1.6rem;
+  }
+  .about-container .about-wrapper .my-info .info-wrapper .name {
+    font-size: 1.8rem;
+  }
+  .about-container .about-wrapper .my-info .info-wrapper .job {
+    font-size: 1.6rem;
+  }
+  .about-container .about-content-wrapper .content-text .br {
+    display: block;
+  }
+  .skill-content-wrapper .skill-wrapper {
+    display: grid;
+    grid-template-columns: repeat(1, 320px);
+  }
+}/*# sourceMappingURL=about.css.map */

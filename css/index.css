@@ -4537,7 +4537,6 @@ body {
   font-family: "clone-rounded-latin", sans-serif;
   color: #333;
   animation: fadeIn 2s ease 0s 1 normal;
-  -webkit-animation: fadeIn 2s ease 0s 1 normal;
 }
 
 @keyframes fadeIn {
@@ -4557,26 +4556,45 @@ body {
   }
 }
 .header {
-  width: 100%;
-  padding: 50px 20px 0 50px;
+  padding: 50px 50px 0px 50px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.header .nav {
-  width: auto;
-  width: 220px;
-}
-.header .nav .link-list {
+.header .link-list {
   list-style-type: none;
   display: flex;
   justify-content: space-between;
 }
-.header .nav .link-list .link {
+.header .link-list .link-wrap {
+  margin-left: 32px;
+}
+.header .link-list .link-wrap:first-child {
+  margin-left: 0px;
+}
+.header .link-list .link-wrap .link {
   color: #333;
   font-size: 16px;
   font-weight: 600;
   text-decoration: none;
+  transition: 0.2s ease-in;
+  position: relative;
+}
+.header .link-list .link-wrap .link::after {
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  display: block;
+  content: " ";
+  width: 100%;
+  height: 2px;
+  background-color: #777;
+  transform: scale(0, 1);
+  transform-origin: center top;
+  transition: all 0.3s ease;
+}
+.header .link-list .link-wrap .link:hover::after {
+  transform: scale(1, 1);
 }
 .header .home {
   text-decoration: none;
@@ -4598,14 +4616,12 @@ body {
 }
 .fv-container .fv-wrapper .heading {
   font-size: 4rem;
-  line-height: 4rem;
   font-weight: 900;
   margin-top: auto;
   text-align: center;
 }
 .fv-container .fv-wrapper .heading .h1-span {
   font-size: 3.4rem;
-  line-height: 3.4rem;
   font-weight: 600;
 }
 .fv-container .fv-wrapper .down {
@@ -4624,37 +4640,36 @@ body {
 
 .my-consept-container {
   margin-top: 160px;
-  width: 100%;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
 }
 .my-consept-container .consept-wrapper {
-  width: auto;
-  text-align: center;
+  width: 880px;
 }
 .my-consept-container .consept-wrapper .heading2 {
   text-align: center;
-  font-size: 3rem;
+  font-size: 2.4rem;
 }
 .my-consept-container .consept-wrapper .consept-text {
+  text-align: center;
   padding: 0px 16px;
-  width: 960px;
   margin-top: 20px;
-  font-size: 2rem;
-  line-height: 3.6rem;
+  font-size: 1.8rem;
 }
 
 .profile-container {
   margin-top: 160px;
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.profile-container .profile-wrapper .profile {
+.profile-container .profile {
   text-align: center;
   font-size: 18px;
   position: relative;
 }
-.profile-container .profile-wrapper .profile::after {
+.profile-container .profile::after {
   display: block;
   position: absolute;
   left: 50%;
@@ -4663,97 +4678,87 @@ body {
   border-bottom: 2px solid #333;
   content: "";
 }
-.profile-container .profile-wrapper .my-info-container {
+.profile-container .my-info-wrapper {
   margin-top: 50px;
-  display: flex;
-  justify-content: center;
-}
-.profile-container .profile-wrapper .my-info-container .my-info-wrapper {
-  width: 720px;
+  width: 640px;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   align-items: center;
 }
-.profile-container .profile-wrapper .my-info-container .my-info-wrapper .info-wrapper .birthday {
-  font-size: 16px;
+.profile-container .my-info-wrapper .info-wrapper .birthday {
+  color: #3e3e3e;
+  font-size: 1.4rem;
 }
-.profile-container .profile-wrapper .my-info-container .my-info-wrapper .info-wrapper .name {
-  font-size: 2rem;
-  line-height: 100%;
+.profile-container .my-info-wrapper .info-wrapper .name {
+  font-size: 1.8rem;
 }
-.profile-container .profile-wrapper .my-info-container .my-info-wrapper .info-wrapper .school {
-  margin-top: 20px;
-  font-size: 1.5rem;
-  line-height: 2.4rem;
+.profile-container .my-info-wrapper .info-wrapper .school {
+  margin-top: 8px;
+  font-size: 1.4rem;
 }
-.profile-container .profile-wrapper .my-info-container .my-info-wrapper .info-wrapper .hobby {
-  margin-top: 20px;
-  font-size: 1.5rem;
-  line-height: 2.4rem;
-  margin-bottom: 16px;
+.profile-container .my-info-wrapper .info-wrapper .hobby {
+  margin-top: 8px;
+  font-size: 1.4rem;
 }
-.profile-container .profile-wrapper .my-info-container .my-info-wrapper .info-wrapper .photo-link-btn .photo-link {
-  font-size: 1rem;
+.profile-container .my-info-wrapper .info-wrapper .photo-link-btn {
+  margin-top: 8px;
+}
+.profile-container .my-info-wrapper .info-wrapper .photo-link-btn .photo-link {
+  font-size: 12px;
   color: #fff;
-  padding: 16px 8px;
+  padding: 10px 30px;
   background-color: #606060;
   border: 1px solid #333;
   transition: 0.2s;
 }
-.profile-container .profile-wrapper .my-info-container .my-info-wrapper .info-wrapper .photo-link-btn .photo-link:hover {
+.profile-container .my-info-wrapper .info-wrapper .photo-link-btn .photo-link:hover {
   color: #333;
   background-color: #fff;
   border: 1px solid #333;
 }
-.profile-container .profile-wrapper .my-info-container .my-info-img {
-  width: 250px;
-  height: 250px;
+.profile-container .my-info-wrapper .my-info-img {
+  width: 180px;
+  height: 180px;
   object-fit: cover;
-  position: relative;
 }
-.profile-container .profile-wrapper .my-info-container .my-info-img::after {
-  display: block;
-  content: " ";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-color: #333;
-  top: 3%;
-  right: -3%;
-  z-index: -1;
+.profile-container .h3_margin {
+  margin-top: 80px;
 }
-.profile-container .profile-wrapper .skill-container {
+.profile-container .skill-wrap {
   margin-top: 50px;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-.profile-container .profile-wrapper .skill-container .skill-list {
-  width:720px;
   list-style-type: none;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(3, 336px);
+  gap: 64px;
 }
-.profile-container .profile-wrapper .skill-container .skill-list .skill-wrap {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  flex-wrap: wrap;
+.profile-container .skill-wrap .skill-content {
+  padding: 28px 32px 32px;
+  border: solid 2px;
+  text-align: center;
+  border-radius: 20px 10px 20px 10px;
 }
-.profile-container .profile-wrapper .skill-container .skill-list .skill-wrap .skills {
-  width: 65px;
+.profile-container .skill-wrap .skill-content .skill-icon-resp {
+  display: none;
 }
-.profile-container .profile-wrapper .skill-container .skill-list .skill-wrap .percent {
-  font-size: 1.5rem;
+.profile-container .skill-wrap .skill-content .skill-ttl {
+  font-size: 1.4rem;
+  font-weight: 800;
 }
-.profile-container .profile-wrapper .btn-wrapper {
+.profile-container .skill-wrap .skill-content .skill-text {
+  margin-top: 24px;
+  font-size: 1.3rem;
+}
+.profile-container .btn-wrapper {
   margin-top: 70px;
   text-align: center;
+  display: flex;
+  justify-content: center;
 }
-.profile-container .profile-wrapper .btn-wrapper .btn {
-  padding: 20px 40px;
+.profile-container .btn-wrapper .btn {
+  display: block;
+  width: 120px;
+  line-height: 40px;
   border: solid #333 2px;
   text-decoration: none;
   color: #333;
@@ -4762,76 +4767,64 @@ body {
   font-weight: bold;
   transition: 0.2s ease-in;
 }
-.profile-container .profile-wrapper .btn-wrapper .btn:hover {
+.profile-container .btn-wrapper .btn:hover {
   color: #fff;
   background-color: #333;
 }
 
-.works-container {
+.works-wrapper {
   margin-top: 160px;
-  width: 100%;
+}
+.works-wrapper .heading2 {
+  text-align: center;
+  font-size: 3rem;
+}
+.works-wrapper .work-container {
+  display: flex;
+  justify-content: center;
+}
+.works-wrapper .work-container .works-list {
+  display: grid;
+  grid-template-columns: repeat(2, 320px); /* PCサイズ時は3列 */
+  gap: 80px 60px;
+  list-style-type: none;
+  margin-top: 40px;
+}
+.works-wrapper .work-container .works-list .work {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
 }
-.works-container .works-wrapper {
-  width: 80%;
+.works-wrapper .work-container .works-list .work .work-link {
+  width: 320px;
 }
-.works-container .works-wrapper .heading2 {
-  font-size: 18px;
-  text-align: center;
-  position: relative;
-}
-.works-container .works-wrapper .heading2::after {
+.works-wrapper .work-container .works-list .work .work-link .work-img {
+  width: 100%;
   display: block;
-  position: absolute;
-  left: 50%;
-  width: 30px;
-  margin: 10px 0 0 -15px;
-  border-bottom: 2px solid #333;
-  content: "";
+  object-fit: cover;
+  transition: 0.2s;
 }
-.works-container .works-wrapper .works-list {
-  margin-top: 40px;
-  list-style-type: none;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-}
-.works-container .works-wrapper .works-list .work-wrapper {
-  margin-top: 50px;
-}
-.works-container .works-wrapper .works-list .work-wrapper .work-link {
-  text-decoration: none;
-  color: #333;
-}
-.works-container .works-wrapper .works-list .work-wrapper .work-link .work-img {
-  width: 400px;
-  background-color: #fff;
-  transition: 0.25s ease;
-}
-.works-container .works-wrapper .works-list .work-wrapper .work-link:hover .work-img {
+.works-wrapper .work-container .works-list .work:hover .work-img {
   opacity: 0.5;
 }
-.works-container .works-wrapper .works-list .work-wrapper .work-info {
-  margin-left: 10px;
+.works-wrapper .work-container .works-list .work .work-info {
+  text-align: center;
+  margin-top: 8px;
 }
-.works-container .works-wrapper .works-list .work-wrapper .work-info .work-name {
-  font-size: 1.8rem;
-  font-weight: 700;
-  line-height: 2.5rem;
+.works-wrapper .work-container .works-list .work .work-info .work-name {
+  font-size: 1.6rem;
+  font-weight: 400;
 }
-.works-container .works-wrapper .works-list .work-wrapper .work-info .work-date {
-  font-size: 1.5rem;
-  line-height: 2rem;
-}
-.works-container .works-wrapper .btn-wrapper {
+.works-wrapper .btn-wrapper {
   margin-top: 70px;
   text-align: center;
+  display: flex;
+  justify-content: center;
 }
-.works-container .works-wrapper .btn-wrapper .btn {
-  padding: 20px 40px;
+.works-wrapper .btn-wrapper .btn {
+  display: block;
+  width: 120px;
+  line-height: 40px;
   border: solid #333 2px;
   text-decoration: none;
   color: #333;
@@ -4840,7 +4833,7 @@ body {
   font-weight: bold;
   transition: 0.2s ease-in;
 }
-.works-container .works-wrapper .btn-wrapper .btn:hover {
+.works-wrapper .btn-wrapper .btn:hover {
   color: #fff;
   background-color: #333;
 }
@@ -4855,7 +4848,7 @@ body {
   text-align: center;
 }
 .contact-container .contact-wrapper .contact {
-  font-size: 18px;
+  font-size: 1.8rem;
   position: relative;
 }
 .contact-container .contact-wrapper .contact::after {
@@ -4869,7 +4862,7 @@ body {
 }
 .contact-container .contact-wrapper .contact-text {
   margin-top: 40px;
-  font-size: 16px;
+  font-size: 1.4rem;
   font-weight: 500;
   letter-spacing: 0.5rem;
 }
@@ -4883,7 +4876,6 @@ body {
   color: #333;
   font-size: 12px;
   font-style: normal;
-  font-weight: bold;
   transition: 0.2s ease-in;
 }
 .contact-container .contact-wrapper .address-wrapper .address:hover {
@@ -4902,7 +4894,205 @@ body {
   font-size: 10px;
   font-weight: bold;
   color: #FFF;
+}
+
+@media screen and (max-width: 768px) {
+  .header {
+    padding: 20px 20px 0px 20px;
+  }
+  .header .home {
+    text-decoration: none;
+    color: #333;
+    font-size: 1.6rem;
+    font-weight: 900;
+  }
+  .header .link-list {
+    list-style-type: none;
+    display: flex;
+    justify-content: right;
+  }
+  .header .link-list .link-wrap {
+    margin-left: 10px;
+  }
+  .header .link-list .link-wrap:first-child {
+    margin-left: 0px;
+  }
+  .header .link-list .link-wrap .link {
+    color: #333;
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.2s ease-in;
+    position: relative;
+  }
+  .header .link-list .link-wrap .link::after {
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    display: block;
+    content: " ";
+    width: 100%;
+    height: 2px;
+    background-color: #777;
+    transform: scale(0, 1);
+    transform-origin: center top;
+    transition: all 0.3s ease;
+  }
+  .header .link-list .link-wrap .link:hover::after {
+    transform: scale(1, 1);
+  }
+  .my-consept-container .consept-wrapper {
+    width: 560px;
+  }
+  .my-consept-container .consept-wrapper .heading2 {
+    text-align: center;
+    font-size: 1.8rem;
+  }
+  .my-consept-container .consept-wrapper .consept-text {
+    text-align: center;
+    padding: 0px 16px;
+    margin-top: 20px;
+    font-size: 1.6rem;
+  }
+  .profile-container {
+    margin-top: 160px;
+    display: flex;
+    align-items: center;
+  }
+  .profile-container .my-info-wrapper {
+    margin-top: 50px;
+    width: 560px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .profile-container .my-info-wrapper .info-wrapper {
+    margin-top: 24px;
+  }
+  .profile-container .my-info-wrapper .info-wrapper .birthday {
+    font-size: 1.4rem;
+  }
+  .profile-container .my-info-wrapper .info-wrapper .name {
+    font-size: 1.6rem;
+  }
+  .profile-container .my-info-wrapper .info-wrapper .school {
+    font-size: 1.4rem;
+  }
+  .profile-container .my-info-wrapper .info-wrapper .hobby {
+    font-size: 1.4rem;
+  }
+  .profile-container .my-info-wrapper .my-info-img {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  .profile-container .skill-wrap {
+    display: grid;
+    grid-template-columns: repeat(2, 280px);
+  }
+  .profile-container .skill-wrap .skill-content .skill-icon {
+    display: none;
+  }
+  .profile-container .skill-wrap .skill-content .skill-icon-resp {
+    display: inline;
+  }
+  .profile-container .skill-wrap .skill-content .skill-ttl {
+    font-size: 1.2rem;
+    font-weight: 800;
+  }
+  .profile-container .skill-wrap .skill-content .skill-text {
+    margin-top: 24px;
+    font-size: 1rem;
+  }
+  .works-wrapper .heading2 {
+    text-align: center;
+    font-size: 2rem;
+  }
+  .works-wrapper .work-container .works-list {
+    display: grid;
+    grid-template-columns: repeat(2, 320px); /* PCサイズ時は3列 */
+  }
+  .works-wrapper .work-container .works-list .work .work-link {
+    width: 320px;
+  }
+  .works-wrapper .work-container .works-list .work .work-info .work-name {
+    font-size: 1.4rem;
+    font-weight: 400;
+  }
+}
+@media screen and (max-width: 420px) {
+  .fv-container .fv-wrapper .heading {
+    font-size: 2rem;
+  }
+  .fv-container .fv-wrapper .heading .h1-span {
+    font-size: 1.8rem;
+  }
+  .profile-container {
+    margin-top: 160px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .profile-container .my-info-wrapper {
+    margin-top: 50px;
+    width: 320px;
+    display: flex;
+    flex-direction: column-reverse;
+    flex-wrap: wrap;
+  }
+  .profile-container .my-info-wrapper .info-wrapper {
+    margin-top: 24px;
+  }
+  .profile-container .my-info-wrapper .info-wrapper .birthday {
+    font-size: 1.2rem;
+  }
+  .profile-container .my-info-wrapper .info-wrapper .name {
+    font-size: 1.4rem;
+  }
+  .profile-container .my-info-wrapper .info-wrapper .school {
+    font-size: 1.2rem;
+  }
+  .profile-container .my-info-wrapper .info-wrapper .hobby {
+    font-size: 1.2rem;
+  }
+  .profile-container .my-info-wrapper .my-info-img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  .profile-container .skill-wrap {
+    display: grid;
+    grid-template-columns: repeat(1, 280px);
+  }
+  .profile-container .skill-wrap .skill-content .skill-icon {
+    display: none;
+  }
+  .profile-container .skill-wrap .skill-content .skill-icon-resp {
+    display: inline;
+  }
+  .profile-container .skill-wrap .skill-content .skill-ttl {
+    font-size: 1.2rem;
+    font-weight: 800;
+  }
+  .profile-container .skill-wrap .skill-content .skill-text {
+    margin-top: 24px;
+    font-size: 1rem;
+  }
+  .works-wrapper .heading2 {
+    text-align: center;
+    font-size: 2rem;
+  }
+  .works-wrapper .work-container .works-list {
+    display: grid;
+    grid-template-columns: 216px; /* PCサイズ時は3列 */
+    gap: 40px;
+  }
+  .works-wrapper .work-container .works-list .work .work-link {
+    width: 216px;
+  }
+  .works-wrapper .work-container .works-list .work .work-info .work-name {
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
 }/*# sourceMappingURL=index.css.map */
-
-/* 以下レスポンシブ */
-

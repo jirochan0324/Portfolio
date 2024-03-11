@@ -4557,27 +4557,45 @@ body {
   }
 }
 .header {
-  max-width: 100%;
-  padding: 50px 20px 0 50px;
+  padding: 50px 50px 0px 50px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.header .nav {
-  width: auto;
-  max-width: 220px;
-  min-width: 220px;
-}
-.header .nav .link-list {
+.header .link-list {
   list-style-type: none;
   display: flex;
   justify-content: space-between;
 }
-.header .nav .link-list .link {
+.header .link-list .link-wrap {
+  margin-left: 32px;
+}
+.header .link-list .link-wrap:first-child {
+  margin-left: 0px;
+}
+.header .link-list .link-wrap .link {
   color: #333;
   font-size: 16px;
   font-weight: 600;
   text-decoration: none;
+  transition: 0.2s ease-in;
+  position: relative;
+}
+.header .link-list .link-wrap .link::after {
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  display: block;
+  content: " ";
+  width: 100%;
+  height: 2px;
+  background-color: #777;
+  transform: scale(0, 1);
+  transform-origin: center top;
+  transition: all 0.3s ease;
+}
+.header .link-list .link-wrap .link:hover::after {
+  transform: scale(1, 1);
 }
 .header .home {
   text-decoration: none;
@@ -4586,77 +4604,44 @@ body {
   font-weight: 900;
 }
 
-.works-container {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.works-wrapper {
+  margin-top: 80px;
 }
-.works-container .works-wrapper {
-  width: 80%;
-}
-.works-container .works-wrapper .heading2 {
+.works-wrapper .heading2 {
   text-align: center;
   font-size: 3rem;
 }
-.works-container .works-wrapper .works-list {
-  margin-top: 40px;
+.works-wrapper .works-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* PCサイズ時は3列 */
+  gap: 40px;
   list-style-type: none;
+  margin-top: 40px;
+  padding: 0px 40px;
+}
+.works-wrapper .works-list .work {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
 }
-.works-container .works-wrapper .works-list .work-wrapper {
-  margin-top: 80px;
+.works-wrapper .works-list .work .work-link {
+  display: block;
 }
-.works-container .works-wrapper .works-list .work-wrapper .work-link {
-  text-decoration: none;
-  color: #333;
+.works-wrapper .works-list .work .work-img {
+  width: 100%; /* 画像が親要素にフィットするように */
+  height: auto;
+  transition: 0.2s;
 }
-.works-container .works-wrapper .works-list .work-wrapper .work-link .work-img {
-  width: 400px;
-  background-color: #fff;
-  transition: 0.25s ease;
-}
-.works-container .works-wrapper .works-list .work-wrapper .work-link:hover .work-img {
+.works-wrapper .works-list .work:hover .work-img {
   opacity: 0.5;
 }
-.works-container .works-wrapper .works-list .work-wrapper .work-info {
-  margin-left: 10px;
-}
-.works-container .works-wrapper .works-list .work-wrapper .work-info .work-name {
-  font-size: 1.8rem;
-  font-weight: 700;
-  line-height: 2.5rem;
-}
-.works-container .works-wrapper .works-list .work-wrapper .work-info .work-date {
-  font-size: 1.5rem;
-  line-height: 2rem;
-}
-.works-container .works-wrapper .works-list .work-wrapper:first-child {
-  margin-top: 50px;
-}
-.works-container .works-wrapper .works-list .work-wrapper:nth-child(2) {
-  margin-top: 50px;
-}
-.works-container .works-wrapper .btn-wrapper {
-  margin-top: 70px;
+.works-wrapper .works-list .work .work-info {
   text-align: center;
+  margin-top: 8px;
 }
-.works-container .works-wrapper .btn-wrapper .btn {
-  padding: 20px 40px;
-  border: solid #333 2px;
-  text-decoration: none;
-  color: #333;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: bold;
-  transition: 0.2s ease-in;
-}
-.works-container .works-wrapper .btn-wrapper .btn:hover {
-  color: #fff;
-  background-color: #333;
+.works-wrapper .works-list .work .work-info .work-name {
+  font-size: 1.6rem;
+  font-weight: 400;
 }
 
 .contact-container {
@@ -4669,7 +4654,7 @@ body {
   text-align: center;
 }
 .contact-container .contact-wrapper .contact {
-  font-size: 18px;
+  font-size: 1.8rem;
   position: relative;
 }
 .contact-container .contact-wrapper .contact::after {
@@ -4683,7 +4668,7 @@ body {
 }
 .contact-container .contact-wrapper .contact-text {
   margin-top: 40px;
-  font-size: 16px;
+  font-size: 1.4rem;
   font-weight: 500;
   letter-spacing: 0.5rem;
 }
@@ -4697,7 +4682,6 @@ body {
   color: #333;
   font-size: 12px;
   font-style: normal;
-  font-weight: bold;
   transition: 0.2s ease-in;
 }
 .contact-container .contact-wrapper .address-wrapper .address:hover {
@@ -4716,211 +4700,63 @@ body {
   font-size: 10px;
   font-weight: bold;
   color: #FFF;
-}/*# sourceMappingURL=work.css.map */
-
-/* 以下レスポンシブ */
-@media screen and (min-width:768px){
-  .header {
-    padding: 50px  20px 0px 50px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .fv-container {
-    height: 50vh;
-  }
-  .my-consept-container .consept-wrapper .heading2 {
-    text-align: center;
-    font-size: 3rem;
-  }
-  .my-consept-container .consept-wrapper .consept-text {
-    padding: 0px 16px;
-    width: 720px;
-    min-width: 380px;
-    margin-top: 20px;
-    font-size: 2rem;
-  }
-
-  .profile-container .profile-wrapper .my-info-container .my-info-wrapper {
-    width: 560px;
-  }
-  .profile-container .profile-wrapper .my-info-container .my-info-wrappe .info-wrapper .my-info-img {
-    width: 160px;
-    height: 160px;
-    object-fit: cover;
-    position: relative;
-  }
-  .profile-container .profile-wrapper .skill-container .skill-list {
-    width:560px;
-    list-style-type: none;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-  }
 }
 
-@media screen and (min-width:375px){
+@media screen and (max-width: 768px) {
   .header {
-    padding: 20px 8px 0px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    padding: 20px 20px 0px 20px;
   }
-
-  .header .nav .link-list .link {
-    color: #333;
-    font-size: 12px;
-    font-weight: 600;
-    text-decoration: none;
-  }
-
   .header .home {
     text-decoration: none;
     color: #333;
     font-size: 1.6rem;
     font-weight: 900;
   }
-
-
-  .fv-container {
-    height: 65vh;
-  }
-
-
-  .my-consept-container .consept-wrapper .heading2 {
-    text-align: center;
-    font-size: 2rem;
-  }
-  .my-consept-container .consept-wrapper .consept-text {
-    padding: 0px 16px;
-    width:370px;
-    margin-top: 20px;
-    font-size: 1.6rem;
-  }
-
-
-  .profile-container .profile-wrapper .my-info-container .my-info-wrapper {
-    width: 370px;
-    flex-direction: column-reverse;
-  }
-  .profile-container .profile-wrapper .my-info-container .my-info-wrapper .my-info-img{
-    width: 160px;
-    height: 160px;
-    object-fit: cover;
-    position: relative;
-    margin-bottom:32px;
-  }
-  .profile-container .profile-wrapper .skill-container .skill-list {
-    width:320px;
+  .header .link-list {
     list-style-type: none;
     display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    justify-content: right;
   }
-  .profile-container .profile-wrapper .my-info-container .my-info-wrapper .info-wrapper .birthday {
-    font-size: 1.4rem;
-  }
-  .profile-container .profile-wrapper .my-info-container .my-info-wrapper .info-wrapper .name {
-    font-size: 1.6rem;
-    line-height: 100%;
-  }
-  .profile-container .profile-wrapper .my-info-container .my-info-wrapper .info-wrapper .school {
-    margin-top: 20px;
-    font-size: 1.4rem;
-    line-height: 2.4rem;
-  }
-  .profile-container .profile-wrapper .my-info-container .my-info-wrapper .info-wrapper .hobby {
-    margin-top: 20px;
-    font-size: 1.4rem;
-    line-height: 1.8rem;
-  }
-  .profile-container .profile-wrapper .my-info-container .my-info-wrapper .info-wrapper .photo-link-btn {
-    margin-top: 8px;
-  }
-  .profile-container .profile-wrapper .my-info-container .my-info-wrapper .info-wrapper .photo-link-btn .photo-link {
-    font-size: 1.2rem;
-    color: #fff;
-    padding: 10px 30px;
-    background-color: #606060;
-    border: 1px solid #333;
-    transition: 0.2s;
-  }
-  .profile-container .profile-wrapper .my-info-container .my-info-wrapper .info-wrapper .photo-link-btn .photo-link:hover {
-    color: #333;
-    background-color: #fff;
-    border: 1px solid #333;
-  }
-
-  .profile-container .profile-wrapper .skill-container {
-    margin-top: 50px;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    width: 100%;
-  }
-  .profile-container .profile-wrapper .skill-container .skill-list {
-    width: 345px;
-    list-style-type: none;
-    display: flex;
-    justify-content: space-between;
-  }
-  .profile-container .profile-wrapper .skill-container .skill-list .skill-wrap {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .profile-container .profile-wrapper .skill-container .skill-list .skill-wrap .skills {
-    width: 42px;
-  }
-  .profile-container .profile-wrapper .skill-container .skill-list .skill-wrap .percent {
-    font-size: 1.2rem;
-  }
-
-
-  .works-container {
-    margin-top: 160px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  .works-container .works-wrapper {
-    width: 100%;
-  }
-  .works-container .works-wrapper .works-list .work-wrapper .work-link .work-img {
-    width: 340px;
-  }
-  .works-container .works-wrapper .works-list .work-wrapper .work-info {
+  .header .link-list .link-wrap {
     margin-left: 10px;
   }
-  .works-container .works-wrapper .works-list .work-wrapper .work-info .work-name {
-    font-size: 1.4rem;
-    font-weight: 700;
-    line-height: 1.8rem;
+  .header .link-list .link-wrap:first-child {
+    margin-left: 0px;
   }
-  .works-container .works-wrapper .works-list .work-wrapper .work-info .work-date {
-    font-size: 1.2rem;
-    line-height: 2rem;
-  }
-  .works-container .works-wrapper .btn-wrapper {
-    margin-top: 70px;
-    text-align: center;
-  }
-  .works-container .works-wrapper .btn-wrapper .btn {
-    padding: 20px 40px;
-    border: solid #333 2px;
-    text-decoration: none;
+  .header .link-list .link-wrap .link {
     color: #333;
     font-size: 1.2rem;
-    font-style: normal;
-    font-weight: bold;
+    font-weight: 600;
+    text-decoration: none;
     transition: 0.2s ease-in;
+    position: relative;
   }
-  .works-container .works-wrapper .btn-wrapper .btn:hover {
-    color: #fff;
-    background-color: #333;
+  .header .link-list .link-wrap .link::after {
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    display: block;
+    content: " ";
+    width: 100%;
+    height: 2px;
+    background-color: #777;
+    transform: scale(0, 1);
+    transform-origin: center top;
+    transition: all 0.3s ease;
   }
-}
+  .header .link-list .link-wrap .link:hover::after {
+    transform: scale(1, 1);
+  }
+  .works-wrapper .heading2 {
+    text-align: center;
+    font-size: 1.8rem;
+  }
+  .works-wrapper .works-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .works-wrapper .works-list .work .work-info .work-name {
+    font-size: 1.2rem;
+    font-weight: 400;
+  }
+}/*# sourceMappingURL=work.css.map */
