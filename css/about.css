@@ -4761,7 +4761,7 @@ body {
   color: #FFF;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
   .header {
     padding: 20px 20px 0px 20px;
   }
@@ -4826,8 +4826,28 @@ body {
   .about-container .about-content-wrapper .content-text .br {
     display: block;
   }
-  .skill-content-wrapper .skill-wrapper {
+  .about-container .skill-wrap {
+    margin-top: 50px;
+    list-style-type: none;
     display: grid;
-    grid-template-columns: repeat(1, 320px);
+    grid-template-columns: repeat(1, 336px);
+    gap: 64px;
+  }
+  .about-container .skill-wrap .skill-content {
+    padding: 28px 32px 32px;
+    border: solid 2px;
+    text-align: center;
+    border-radius: 20px 10px 20px 10px;
+  }
+  .about-container .skill-wrap .skill-content .skill-icon-resp {
+    display: none;
+  }
+  .about-container .skill-wrap .skill-content .skill-ttl {
+    font-size: 1.4rem;
+    font-weight: 800;
+  }
+  .about-container .skill-wrap .skill-content .skill-text {
+    margin-top: 24px;
+    font-size: 1.3rem;
   }
 }/*# sourceMappingURL=about.css.map */
