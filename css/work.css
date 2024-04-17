@@ -4631,6 +4631,7 @@ body {
   display: flex;
   justify-content: center;
 }
+
 .works-wrapper .works-list {
   display: grid;
   grid-template-columns: repeat(3, 320px); /* PCサイズ時は3列 */
@@ -4670,6 +4671,7 @@ body {
 .works-wrapper .works-list .work .work-info .work-name {
   font-size: 1.4rem;
   font-weight: 600;
+  margin-top: 4px;
 }
 
 .contact-container {
@@ -4781,10 +4783,28 @@ body {
   }
   .works-wrapper .works-list {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 320px);
+    gap: 60px;
+    list-style-type: none;
+    margin-top: 40px;
   }
   .works-wrapper .works-list .work .work-info .work-name {
     font-size: 1.2rem;
     font-weight: 400;
   }
 } /*# sourceMappingURL=work.css.map */
+
+@media screen and (max-width: 420px) {
+  .works-wrapper .works-list {
+    display: grid;
+    grid-template-columns: repeat(1, 320px);
+  }
+  .works-wrapper .works-list .work .work-info .work-category {
+    color: #7f7f7f;
+    font-size: 1.2rem;
+  }
+  .works-wrapper .works-list .work .work-info .work-name {
+    font-size: 1.4rem;
+    font-weight: 600;
+  }
+}

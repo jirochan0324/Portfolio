@@ -4829,6 +4829,9 @@ body {
   transition: 0.2s;
 }
 .works-wrapper .work-container .works-list .work .work-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   height: 150px;
 }
 .works-wrapper .work-container .works-list .work .work-link .work-img {
@@ -4852,6 +4855,7 @@ body {
 .works-wrapper .work-container .works-list .work .work-info .work-name {
   font-size: 1.4rem;
   font-weight: 600;
+  margin-top: 4px;
 }
 .works-wrapper .btn-wrapper {
   margin-top: 70px;
@@ -5055,9 +5059,10 @@ body {
   }
   .works-wrapper .work-container .works-list .work .work-info .work-name {
     font-size: 1.4rem;
-    font-weight: 400;
+    font-weight: 600;
   }
 }
+
 @media screen and (max-width: 420px) {
   .fv-container .fv-wrapper .heading {
     font-size: 2rem;
@@ -5123,14 +5128,14 @@ body {
   }
   .works-wrapper .work-container .works-list {
     display: grid;
-    grid-template-columns: 216px; /* PCサイズ時は3列 */
-    gap: 40px;
+    grid-template-columns: repeat(1, 320px);
   }
-  .works-wrapper .work-container .works-list .work .work-link {
-    width: 216px;
-  }
-  .works-wrapper .work-container .works-list .work .work-info .work-name {
+  .works-wrapper .works-list .work .work-info .work-category {
+    color: #7f7f7f;
     font-size: 1.2rem;
+  }
+  .works-wrapper .works-list .work .work-info .work-name {
+    font-size: 1.4rem;
     font-weight: 600;
   }
 } /*# sourceMappingURL=index.css.map */
