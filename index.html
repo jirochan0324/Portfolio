@@ -27,29 +27,37 @@
 
 <body>
   <header class="header">
-    <h1><a href="index.html" class="home">PORTFORIO</a></h1>
+    <h1><a href="index.html">Jiro's portfolio</a></h1>
 
-    <nav>
+    <div class="openbtn">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <nav id="g-nav">
       <ul class="link-list">
         <li class="link-wrap"><a href="work.html" class="link">WORK</a></li>
         <li class="link-wrap"><a href="about.html" class="link">ABOUT</a></li>
         <li class="link-wrap"><a href="index.html#contact" class="link">CONTACT</a></li>
       </ul>
     </nav>
-    
+
   </header>
 
-  <main>
-    <div class="fv-container">
-      <div class="fv-wrapper">
-        <h1 class="heading">JIRO HAYASHI<br><span class="h1-span">DESIGNER</span></h1>
-        <svg class="down" xmlns="http://www.w3.org/2000/svg" height="24" width="20"
-          viewBox="0 0 384 512"><!--!Font Awesome Free 6.5.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
-          <path
-            d="M169.4 470.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 370.8 224 64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 306.7L54.6 265.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z" />
-        </svg>
-      </div>
+  <div class="fv-container">
+    <div class="fv-wrapper">
+      <h1 class="heading">JIRO HAYASHI<br><span class="h1-span">DESIGNER</span></h1>
+      <svg class="down" xmlns="http://www.w3.org/2000/svg" height="24" width="20"
+        viewBox="0 0 384 512"><!--!Font Awesome Free 6.5.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
+        <path
+          d="M169.4 470.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 370.8 224 64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 306.7L54.6 265.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z" />
+      </svg>
     </div>
+  </div>
+
+
+  <main>
 
     <div class="my-consept-container">
       <div class="consept-wrapper">
@@ -256,11 +264,13 @@
   </main>
 
   <footer class="footer">
-    <p class="footer-text">&copy; 2023 Jiro</p>
+    <p class="footer-text">&copy; <script type="text/Javascript">document.write(new Date().getFullYear());</script> - Jiro's Portfolio</p>
   </footer>
 
   <!-- js -->
   <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <script src="js/portfolio.js"></script>
+  <script src="js/particles.min.js"></script>
+  <script src="js/particles.js"></script>
 </body>
 </html>
